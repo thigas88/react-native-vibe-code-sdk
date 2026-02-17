@@ -56,11 +56,11 @@ export async function POST(req: NextRequest) {
     const project = existingProjects[0]
     console.log(`[Recreate Sandbox] Found project: ${project.id}`)
 
-    // Create new sandbox from github template
+    // Create new sandbox from github template (shell for loading existing repos)
     let sandbox: Sandbox
     try {
       console.log('[Recreate Sandbox] Creating new sandbox from github template...')
-      sandbox = await Sandbox.create('github', {
+      sandbox = await Sandbox.create('xzfs8fvtvpe3tcqgyyrp', {
         timeoutMs: parseInt(process.env.E2B_SANDBOX_TIMEOUT_MS || '3600000'), // Use env var, default to 1 hour
       })
       console.log(`[Recreate Sandbox] Created new sandbox: ${sandbox.sandboxId}`)
